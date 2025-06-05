@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fundo implements IComponente {
+    private String nome;
     private List<IComponente> filhos = new ArrayList<>();
+
+    public Fundo(String nome){
+        this.nome = nome;
+    }
 
     public void adicionar(IComponente c){
         filhos.add(c);
@@ -23,5 +28,14 @@ public class Fundo implements IComponente {
         }
         
         return total;
+    }
+
+    @Override
+    public String toString() {
+        String stringResult = nome + ":\n";
+        for (IComponente componente : filhos) {
+            stringResult += '\t' + componente.toString();
+        }
+        return stringResult;
     }
 }
